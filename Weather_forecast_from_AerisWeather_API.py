@@ -45,11 +45,55 @@ else:
 	print("An error occurred: %s" % (json['error']['description']))
 	request.close()
 
-if str(result['ob']['weather']) == "Mostly Cloudy":
-    print("Whatever the clouds plan to do; always trust in the sun which never fails to come out.")
-if str(result['ob']['weather']) == "Cloudy":
-    print("Behind the clouds, the sun is still shining!")
-    #"Partly Cloudy", "Mostly Sunny", "Mostly Clear", "Sunny", "Clear", "Fog" --> still to be added (I'm also not sure if this is complete)
+group_clear = ["Keep your face to the sunshine and you cannot see a shadow!", "A day without sunshine is like, you know, night.", "I don't complain when it's sunny.", "Change, like sunshine, can be a friend or a foe, a blessing or a curse, a dawn or a dusk."]
+group_cloudy = ["Whatever the clouds plan to do; always trust in the sun which never fails to come out.","Behind the clouds, the sun is still shining!", "Who cares about the clouds when we're together? Just sing a song and bring the sunny weather!", "Our mind is like a cloudy sky: in essence clear and pure, but overcast by clouds of delusions. Just as the thickest clouds can disperse, so, too, even the heaviest delusions can be removed from our mind."]
+group_hail = ["Joy descends gently upon us like the evening dew, and does not patter down like a hailstorm.", "Life is a hailstorm of distractions. It's not the monster that stops us but the mosquito."]
+group_fog = ["All action takes place, so to speak, in a kind of twilight, which like a fog or moonlight, often tends to make things seem grotesque and larger than they really are.", "Most consequential choices involve shades of gray, and some fog is often useful in getting things done.", "It is not the clear-sighted who rule the world. Great achievements are accomplished in a blessed, warm fog.", "Writing is like driving at night in the fog. You can only see as far as your headlights, but you can make the whole trip that way."]
+group_frost = ["Life is only a flicker of melted ice.", "It is the life of the crystal, the architect of the flake, the fire of the frost, the soul of the sunbeam. This crisp winter air is full of it.", "Frost is the greatest artist in our clime - he paints in nature and describes in rime.", "The frost makes a flower, the dew makes a star."]
+group_rain = ["The way I see it, if you want the rainbow, you gotta put up with the rain.", "The best thing one can do when it's raining is to let it rain.", "If the rain spoils our picnic, but saves a farmer's crop, who are we to say it shouldn't rain?", "Into each life some rain must fall."]
+group_snow = ["The Eskimos had fifty-two names for snow because it was important to them: there ought to be as many for love.", "Snow and adolescence are the only problems that disappear if you ignore them long enough.", "Advice is like snow - the softer it falls, the longer it dwells upon, and the deeper it sinks into the mind.", "Courtesies cannot be borrowed like snow shovels; you must have some of your own."]
+group_thunderstorm = ["After every storm the sun will smile; for every problem there is a solution, and the soul's indefeasible duty is to be of good cheer.", "The fishermen know that the sea is dangerous and the storm terrible, but they have never found these dangers sufficient reason for remaining ashore.", "After a storm comes a calm.", "The more violent the storm, the quicker it passes."]
+
+code_clear = ["Clear", "Fair", "Fair/Mostly Sunny", "Mostly Sunny", "Sunny", "Mostly Clear"]
+code_cloud = ["Cloudy", "Partly Cloudy", "Mostly Cloudy", "Overcast", "Cloudy/Overcast", "Mostly Cloudy with Mist and Fog"]
+code_fog = ["Fog", "Ice Fog", "Haze", "Mist", "Freezing Fog"]
+code_rain = ["Rain", "Drizzle", "Rain showers", "Freezing drizzle", "Freezing rain", "Mostly Cloudy with Light Rain"]
+code_frost = ["Frost", "Ice Pellets", "Ice Pellets/Sleet", "Ice Crystals"]
+code_snow = ["Snow", "Rain/snow mix", "Snow/sleet mix", "Wintry mix (snow, sleet, rain)", "Snow showers", "Cloudy with Light Snow"]
+
+if str(result['ob']['weather']) in code_clear:
+    choose_quote = random.choice(group_clear)
+    print(choose_quote)
+
+if str(result['ob']['weather']) in code_cloud:
+    choose_quote = random.choice(group_cloudy)
+    print(choose_quote)
+
+if str(result['ob']['weather']) in code_fog:
+    choose_quote = random.choice(group_fog)
+    print(choose_quote)
+
+if str(result['ob']['weather']) in code_rain:
+    choose_quote = random.choice(group_rain)
+    print(choose_quote)
+
+if str(result['ob']['weather']) in code_frost:
+    choose_quote = random.choice(group_frost)
+    print(choose_quote)
+
+if str(result['ob']['weather']) in code_snow:
+    choose_quote = random.choice(group_snow)
+    print(choose_quote)
+
+if str(result['ob']['weather']) == "Hail":
+    choose_quote = random.choice(group_hail)
+    print(choose_quote)
+
+if str(result['ob']['weather']) == "Thunderstorm":
+    choose_quote = random.choice(group_thunderstorm)
+    print(choose_quote)
+	
+	
 
 
 
