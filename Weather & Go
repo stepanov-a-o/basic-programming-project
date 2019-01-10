@@ -1,11 +1,4 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Dec 24 12:56:28 2018
-
-@author: antonstepanov
-"""
-# Weather Forecast from AerisWeather API
+# Weather & Go
 
 # The code below allows to check current weather in any location.
 
