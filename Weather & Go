@@ -101,33 +101,7 @@ if result['success']:
         choose_quote = random.choice(group_thunderstorm)
         print(choose_quote)
 	
-	
-# Sending text messages with Python 
-    
-# You will need:
-# 1. virtualenv, enter "pip install virtualenv" in the terminal 
-# If it does not work refer to https://virtualenv.pypa.io/en/latest/installation/ 
-# there are alternative approaches for installation. I used this source: 
-# https://www.fullstackpython.com/blog/python-3-flask-green-unicorn-ubuntu-1604-xenial-xerus.html.
-    
-# 2. a free Twilio account to use their SMS web API
-# Go to https://www.twilio.com/try-twilio and create a free trial account. 
-# The Twilio trial account allows you to send text messages to your own phone 
-# number. In order to do that you will need to validate your phone number and 
-# get a free trial number. 
-    
-# Note: after the registration you will get some free credits. Each text message
-# will reduce your free credits balance, so use messages wisely. 
 
-# 3. Twilio Python helper library 
-# Install the Twilio Python helper library by entering "pip install twilio"
-# in the terminal. For screenshots and more detailed instructions, please refer
-# to https://pypi.org/project/twilio/.
-    
-# If anything in the above instruction is unclear or does not work, please refer 
-# to the original article. The link is below. 
-# https://www.fullstackpython.com/blog/send-sms-text-messages-python.html
-    
 from twilio.rest import Client # we import the Twilio client from the dependency we just installed
 
 sms = str(lines) # this variable is our text message
