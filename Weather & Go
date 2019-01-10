@@ -1,12 +1,5 @@
 # Weather & Go
 
-# The code below allows to check current weather in any location.
-
-# To run the code, you will need:
-# 1. Python 3.6 installed in your OS
-# 2. AerisWeather client_id and client_secret. You can obtain your own here: 
-#    https://www.aerisweather.com/signup/developer/
-
 import urllib # urllib is a package for working with URL 
               # (https://docs.python.org/3/library/urllib.html)
 import json # JSON (JavaScript Object Notation)
@@ -35,8 +28,6 @@ response = request.read()
 result = json.loads(response) 
 
 count = 0
-
-
 while result['success'] == False:
      user_input = str(input("Oops, something went wrong. Please try again with city and iso country code (e.g. tilburg,nl):"))
      count += 1
@@ -49,9 +40,7 @@ while result['success'] == False:
          print("Please refer to https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes and try again later.")
          request.close()
          break
-     
-         
-          
+               
 if result['success']: 
      result = result['response'] #this basically removes the unnecessary dictionaries (the 'success': True etc. so we can print just the important part i.e. the 'response')
     
@@ -64,7 +53,6 @@ if result['success']:
         print(line)
 
   
-
      group_clear = ["Keep your face to the sunshine and you cannot see a shadow! (Hellen Keller)", "A day without sunshine is like, you know, night. (Steve Martin)", "I don't complain when it's sunny. (Tim Howard)", "Change, like sunshine, can be a friend or a foe, a blessing or a curse, a dawn or a dusk. (William Artur Ward)"]
      group_cloudy = ["Whatever the clouds plan to do; always trust in the sun which never fails to come out. (Munia Khan)","Behind the clouds, the sun is still shining! (Henry Wadsworth Longfellow)", "Who cares about the clouds when we're together? Just sing a song and bring the sunny weather! (Dale Evans)", "Our mind is like a cloudy sky: in essence clear and pure, but overcast by clouds of delusions. Just as the thickest clouds can disperse, so, too, even the heaviest delusions can be removed from our mind. (Kelsang Gyatso)"]
      group_hail = ["Joy descends gently upon us like the evening dew, and does not patter down like a hailstorm. (Jean Paul)", "Life is a hailstorm of distractions. It's not the monster that stops us but the mosquito. (Robert G. Allen)"]
@@ -154,8 +142,3 @@ client = Client("YOUR Twilio ACCOUNT SID", "YOUR Twilio AUTH TOKEN")
 client.messages.create(to="+31..........", 
                        from_="+31..........",
                        body = sms)
-
-# AREA OF IMPROVEMENT
-
-# We can set up sms for warning/emergency situations notifications and WhatsApp
-# messages for regular weather forecasts.
