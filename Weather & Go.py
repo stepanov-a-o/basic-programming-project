@@ -77,7 +77,7 @@ if result['success']:
      code_frost = ["Frost", "Ice Pellets", "Ice Pellets/Sleet", "Ice Crystals"]
      code_snow = ["Snow", "Rain/snow mix", "Snow/sleet mix", "Wintry mix (snow, sleet, rain)", "Snow showers", "Cloudy with Light Snow"]
 
-# Setting up scenarios to display a random wisdom thought corresponding to a sky description category
+# Setting up scenarios to display a random wisdom thought corresponding to sky description categories
      if str(result['ob']['weather']) in code_clear:
         choose_quote = random.choice(group_clear)
         print(choose_quote)
