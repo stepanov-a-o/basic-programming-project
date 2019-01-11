@@ -1,35 +1,38 @@
 # Weather & Go
+# version 1.0.0 
 
-import urllib # urllib is a package for working with URL 
-              # (https://docs.python.org/3/library/urllib.html)
-import json # JSON (JavaScript Object Notation)
-import random
+import urllib # urllib is a package for working with URL,
+	      # we used it to send a get request to AerisWeather, 
+	
+import json # JSON (JavaScript Object Notation),
+	    # we used it to gather the information through AerisWeather API,
+	
+import random # we used it to display random quotes/wisdom thoughts to a user
 
-user_input = str(input("Enter city and country code (e.g. tilburg,nl): "))	
-url_part1 = 'https://api.aerisapi.com/observations/'
+user_input = str(input("Enter city and country code (e.g. tilburg,nl): ")) # a simple user interface, which allow to 
+	     # enter a city and an ISO country code
+url_part1 = 'https://api.aerisapi.com/observations/' # using Aeris API to create a request 
 url_part2 = '?&format=json&filter=allstations&limit=1&fields=ob.tempC,ob.humidity,ob.weather,ob.feelslikeC&client_id=..........&client_secret=..........'	
+	     # splitting a hyperlink into two parts (url_part1 and url_part2)to make it more readable
 
-# There are output parameters in the hyperlink i.e. "fields=ob.tempC,ob.humidity,
-# ob.weather,ob.feelslikeC". So we ask to show a temperature in Celsius, 
-# humidity, short weather description and feels like parameters.  
+# There are output parameters in the url_part2 i.e. "fields=ob.tempC,
+# ob.humidity,ob.weather,ob.feelslikeC". We request a temperature in 
+# Celsius, humidity, short weather description and feels like parameters.  
 
 # *** IMPORTANT ***
-# At the end of the url_part2 there are client_id=HT1x1XXXxxZZ5xXXXXXxx & 
-# client_secret=AgxxxVaaaT1XXX3q4lXddR3ixxxxx4e3Gxxx9wz - identification 
-# parameters, which you will get after the registration on AerisWeather.
-# Please register on AerisWeather and update client_id and client_secret in 
-# the hyperlink (url_part2) accordingly. 
+# At the end of the url_part2 there are client_id=.......... & 
+# client_secret=.......... - identification parameters, which
+# you will get after the registration on AerisWeather. Please
+# refer to README file for a detailed installation instructions. 
 
-request = urllib.request.urlopen(url_part1 + user_input + url_part2) 
-# using urllib.request function to open and read a URL
-# combining the url_part1, url_part2 and the user_input together into one URL
-
-response = request.read()
+url = url_part1 + user_input + url_part2 # combining the url_part1, url_part2 and the user_input together into one url
+request = urllib.request.urlopen(url) # using urllib.request function to open and read our url
+response = request.read() # reading the response 
 result = json.loads(response) 
 
 count = 0
 while result['success'] == False:
-     user_input = str(input("Oops, something went wrong. Please try again with city and iso country code (e.g. tilburg,nl):"))
+     user_input = str(input("Oops, something went wrong. Please try again with city and ISO country code (e.g. tilburg,nl):"))
      count += 1
      request = urllib.request.urlopen(url_part1 + user_input + url_part2)
      response = request.read()
@@ -42,14 +45,14 @@ while result['success'] == False:
          break
                
 if result['success']: 
-     result = result['response'] #this basically removes the unnecessary dictionaries (the 'success': True etc. so we can print just the important part i.e. the 'response')
+     result = result['response'] # this basically removes the unnecessary dictionaries (the 'success': True etc. so we can print just the important part i.e. the 'response')
     
-     lines = ("Temperature (C): " + str(result['ob']['tempC']), #unpacking the dictionary, using the keys
+     lines = ("Temperature (C): " + str(result['ob']['tempC']), # unpacking the dictionary, using the keys
           "Humidity: " + str(result['ob']['humidity']) + " %",
           "Sky: " + str(result['ob']['weather']),
           "Feels like (C): " + str(result['ob']['feelslikeC']))
      print(" ")
-     for line in lines: #to print them in separate lines
+     for line in lines: # to print them in separate lines
         print(line)
 
   
@@ -101,7 +104,6 @@ if result['success']:
         choose_quote = random.choice(group_thunderstorm)
         print(choose_quote)
 	
-
 from twilio.rest import Client # we import the Twilio client from the dependency we just installed
 
 sms = str(lines) # this variable is our text message
@@ -111,7 +113,7 @@ sms = str(lines) # this variable is our text message
 client = Client("YOUR Twilio ACCOUNT SID", "YOUR Twilio AUTH TOKEN")
 
 # change the "from_" number to your Twilio number and the "to" number
-# to the phone number you signed up for Twilio with, or upgrade your
+# to the phone number you signed up for Twilio with or upgrade your
 # account to send SMS to any phone number
 client.messages.create(to="+31..........", 
                        from_="+31..........",
