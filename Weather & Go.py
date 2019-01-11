@@ -30,7 +30,6 @@ request = urllib.request.urlopen(url) # using urllib.request function to open an
 response = request.read() # reading the response 
 result = json.loads(response) 
 
-
 # Troubleshooting
 count = 0 # counting unsuccessful request attempts
 while result['success'] == False:
@@ -46,7 +45,6 @@ while result['success'] == False:
          print("Please refer to https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes and try again later.")
          request.close()
          break
-
 		
 # Reading the response from AerisWeather and presenting it to a user		
 if result['success']: 
@@ -60,7 +58,6 @@ if result['success']:
      print(" ")
      for line in lines: # printing keys on separate lines
         print(line)
-
 	
 # Creating wisdom thought categories covering most common weather conditions 
      group_clear = ["Keep your face to the sunshine and you cannot see a shadow! (Hellen Keller)", "A day without sunshine is like, you know, night. (Steve Martin)", "I don't complain when it's sunny. (Tim Howard)", "Change, like sunshine, can be a friend or a foe, a blessing or a curse, a dawn or a dusk. (William Artur Ward)"]
@@ -113,22 +110,22 @@ if result['success']:
         choose_quote = random.choice(group_thunderstorm)
         print(choose_quote)
 	
-	
 from twilio.rest import Client # importing the Twilio Python helper library
 			       # we used it to send SMS messages from Python
 			       # this is an external library, which you need to install separately 
 			       # for installation instructions please refer to README file  
 
 sms = str(lines) # this variable is our SMS message
-		 # for saving purpose, SMS message only includes weather conditions (without wisdom thought) 
+		 # to keep SMS messages readable and to save some SMS traffic 
+	 	 # our SMS messages only include weather conditions (without wisdom thought) 
 	
 # the following line needs your Twilio Account SID and Auth Token
-# you can find this information in the main Dashboard
+# if you do not know where to find them please refer to README file 
 client = Client("YOUR Twilio ACCOUNT SID", "YOUR Twilio AUTH TOKEN")
 
 # change the "from_" number to your Twilio number and the "to" number
-# to the phone number you signed up for Twilio with or upgrade your
-# account to send SMS to any phone number
+# to the phone number you signed up for Twilio (during the registration)
 client.messages.create(to="+31..........", 
                        from_="+31..........",
                        body = sms)
+
