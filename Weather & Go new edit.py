@@ -10,7 +10,7 @@ import json # JSON (JavaScript Object Notation)
 import random # we used it to display random quotes/wisdom thoughts to a user
 
 
-degrees = str(input("Would you like to display the temperature in degrees Celsius or Fahrenheit? Type c/f:"))
+degrees = str(input("Would you like to display the temperature in degrees Celsius or Fahrenheit? Type c/f: "))
 
 
 city_country = str(input("Enter the name of the city and an ISO country code (e.g. tilburg,nl): ")) # creating a simple user interface, which allows to 
