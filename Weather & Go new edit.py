@@ -9,7 +9,6 @@ import json # JSON (JavaScript Object Notation)
 	
 import random # we used it to display random quotes/wisdom thoughts to a user
 
-
 client_id = "&client_id=.........." #replace the dots with the client ID e.g. "&client_id=6pbp6xxxxOnByC6o"
 client_secret = "&client_secret=............" #replace the dots with the client secret e.g. "&client_secret=NGU28dBl2UxxxtllMvj5"
 
@@ -19,14 +18,11 @@ client_secret = "&client_secret=............" #replace the dots with the client 
 # refer to README file for a detailed installation instructions. 
 
 degrees = str(input("Would you like to display the temperature in degrees Celsius or Fahrenheit? Type c/f: "))
-
-
 city_country = str(input("Enter the name of the city and an ISO country code (e.g. tilburg,nl): ")) # creating a simple user interface, which allows to 
 	     # enter a city and an ISO country code
 url_part1 = 'https://api.aerisapi.com/observations/' # using Aeris API to create a request 
 url_part2 = "?&format=json&filter=allstations&limit=1&fields=ob.tempC,ob.humidity,ob.weather,ob.feelslikeC"	
 	     # splitting a hyperlink into more parts to make it more readable
-
 
 # There are output parameters in the url_part2 i.e. "fields=ob.tempC,
 # ob.humidity,ob.weather,ob.feelslikeC". We request a temperature in 
@@ -119,7 +115,6 @@ if result['success'] and degrees == "c":
         choose_quote = random.choice(group_thunderstorm)
         print(choose_quote)
     
-    
      from twilio.rest import Client # importing the Twilio Python helper library
 			       # we used it to send SMS messages from Python
 			       # this is an external library, which you need to install separately 
@@ -140,9 +135,9 @@ if result['success'] and degrees == "c":
      client.messages.create(to="+31..........", 
                        from_="+31..........",
                        body = sms)
-    
+
         
-#Creating scenario for weather report in Fahrenheit        
+# Creating scenario for weather report in Fahrenheit        
 elif result['success'] and degrees == "f": 
     result = result['response'] 
     
@@ -205,8 +200,6 @@ elif result['success'] and degrees == "f":
     if str(result['ob']['weather']) == "Thunderstorm":
         choose_quote = random.choice(group_thunderstorm)
         print(choose_quote)        
-        
-        
        	
     from twilio.rest import Client # importing the Twilio Python helper library
 			       # we used it to send SMS messages from Python
@@ -228,4 +221,3 @@ elif result['success'] and degrees == "f":
     client.messages.create(to="+31..........", 
                        from_="+31..........",
                        body = sms)
-
