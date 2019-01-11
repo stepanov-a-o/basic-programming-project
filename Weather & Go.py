@@ -120,7 +120,7 @@ sms = str(lines) # this variable is our SMS message
 	 	 # our SMS messages only include weather conditions (without wisdom thought) 
 	
 # the following line needs your Twilio Account SID and Auth Token
-# if you do not know where to find them please refer to README file 
+# if you do not know where to find your Twilio Account SID and Auth Token please refer to README file 
 client = Client("YOUR Twilio ACCOUNT SID", "YOUR Twilio AUTH TOKEN")
 
 # change the "from_" number to your Twilio number and the "to" number
