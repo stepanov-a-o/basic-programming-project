@@ -10,6 +10,14 @@ import json # JSON (JavaScript Object Notation)
 import random # we used it to display random quotes/wisdom thoughts to a user
 
 
+client_id = "&client_id=.........." #replace the dots with the client ID e.g. "&client_id=6pbp6xxxxOnByC6o"
+client_secret = "&client_secret=............" #replace the dots with the client secret e.g. "&client_secret=NGU28dBl2UxxxtllMvj5"
+
+# *** IMPORTANT ***
+# the client_id=.......... & client_secret=.......... are identification parameters, 
+# which you will get after the registration on AerisWeather. Please
+# refer to README file for a detailed installation instructions. 
+
 degrees = str(input("Would you like to display the temperature in degrees Celsius or Fahrenheit? Type c/f: "))
 
 
@@ -17,15 +25,8 @@ city_country = str(input("Enter the name of the city and an ISO country code (e.
 	     # enter a city and an ISO country code
 url_part1 = 'https://api.aerisapi.com/observations/' # using Aeris API to create a request 
 url_part2 = "?&format=json&filter=allstations&limit=1&fields=ob.tempC,ob.humidity,ob.weather,ob.feelslikeC"	
-
-client_id = "&client_id=6pbp6hjlWDJXf4OnByC6o" #replace the dots with the client ID e.g. "&client_id=6pbp6xxxxOnByC6o"
-client_secret = "&client_secret=NGU28dBl2UxX6c11od9gecDLXFBE2S5vutllMvj5" #replace the dots with the client secret e.g. "&client_secret=NGU28dBl2UxxxtllMvj5"
 	     # splitting a hyperlink into more parts to make it more readable
 
-# *** IMPORTANT ***
-# the client_id=.......... & client_secret=.......... are identification parameters, 
-# which you will get after the registration on AerisWeather. Please
-# refer to README file for a detailed installation instructions. 
 
 # There are output parameters in the url_part2 i.e. "fields=ob.tempC,
 # ob.humidity,ob.weather,ob.feelslikeC". We request a temperature in 
@@ -79,11 +80,11 @@ if result['success'] and degrees == "c":
 
 # Creating sky description categories  
      code_clear = ["Clear", "Fair", "Fair/Mostly Sunny", "Mostly Sunny", "Sunny", "Mostly Clear"]
-     code_cloud = ["Cloudy", "Partly Cloudy", "Mostly Cloudy", "Overcast", "Cloudy/Overcast", "Mostly Cloudy with Mist and Fog", "Cloudy with Mist and Fog"]
-     code_fog = ["Fog", "Ice Fog", "Haze", "Mist", "Freezing Fog"]
+     code_cloud = ["Cloudy", "Partly Cloudy", "Mostly Cloudy", "Overcast", "Cloudy/Overcast", "Mostly Cloudy with Mist and Fog", "Cloudy with Mist and Fog", "Cloudy with Blowing"]
+     code_fog = ["Fog", "Ice Fog", "Haze","Hazy", "Mist", "Freezing Fog", "Cloudy with Areas of Fog", "Mostly Clear with Mist and Fog"]
      code_rain = ["Rain", "Drizzle", "Rain showers", "Freezing drizzle", "Freezing rain", "Mostly Cloudy with Light Rain","Mostly Cloudy with Heavy Rain", "Mostly Cloudy with Drizzle", "Mostly Cloudy with Heavy Drizzle", "Cloudy with Drizzle","Cloudy with Heavy Drizzle", "Cloudy with Light Drizzle", "Mostly Cloudy with Light Drizzle", "Cloudy with Light Rain", "Cloudy with Heavy Rain"]
      code_frost = ["Frost", "Ice Pellets", "Ice Pellets/Sleet", "Ice Crystals"]
-     code_snow = ["Snow", "Rain/snow mix", "Snow/sleet mix", "Wintry mix (snow, sleet, rain)", "Snow showers", "Cloudy with Light Snow"]
+     code_snow = ["Snow", "Rain/snow mix", "Snow/sleet mix", "Wintry mix (snow, sleet, rain)", "Snow showers", "Cloudy with Light Snow", "Mostly Cloudy with Scattered Snow Showers"]
 
 # Setting up scenarios to display a random wisdom thought corresponding to sky description categories
      if str(result['ob']['weather']) in code_clear:
@@ -146,7 +147,7 @@ elif result['success'] and degrees == "f":
     result = result['response'] 
     
     temperature_fahrenheit = int(result['ob']['tempC']) * 1.8 + 32
-    feels_like_fahrenheit = int(result['ob']['feelslikeC']) * 1.8 + 32 #using the formula to compute Celsius to Fahrenheit
+    feels_like_fahrenheit = round(int(result['ob']['feelslikeC']) * 1.8 + 32) #using the formula to compute Celsius to Fahrenheit
     
     lines = ("Temperature (F): " + str(temperature_fahrenheit), 
           "Humidity: " + str(result['ob']['humidity']) + " %",
