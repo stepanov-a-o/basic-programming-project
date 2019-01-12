@@ -18,6 +18,12 @@ client_secret = "&client_secret=............" #replace the dots with the client 
 # refer to README file for a detailed installation instructions. 
 
 degrees = str(input("Would you like to display the temperature in degrees Celsius or Fahrenheit? Type c/f: "))
+
+while degrees != "c" and degrees != "f":   # for when the user types something else than c or f
+    degrees = str(input("Please type either c (for Celsius) or f (for Fahrenheit): "))
+    if degrees == "c" or degrees == "f":
+        break
+	
 city_country = str(input("Enter the name of the city and an ISO country code (e.g. tilburg,nl): ")) # creating a simple user interface, which allows to 
 	     # enter a city and an ISO country code
 url_part1 = 'https://api.aerisapi.com/observations/' # using Aeris API to create a request 
@@ -114,6 +120,9 @@ if result['success'] and degrees == "c":
      if str(result['ob']['weather']) == "Thunderstorm":
         choose_quote = random.choice(group_thunderstorm)
         print(choose_quote)
+	
+     if (str(result['ob']['weather']) not in code_clear) and (str(result['ob']['weather']) not in code_cloud) and (str(result['ob']['weather']) not in code_fog) and (str(result['ob']['weather']) not in code_rain) and (str(result['ob']['weather']) not in code_frost) and (str(result['ob']['weather']) not in code_snow) and (str(result['ob']['weather']) != "Hail") and (str(result['ob']['weather']) != "Thunderstorm"):
+         print("The quote for this kind of weather is still in development :)")
     
      from twilio.rest import Client # importing the Twilio Python helper library
 			       # we used it to send SMS messages from Python
@@ -141,7 +150,7 @@ if result['success'] and degrees == "c":
 elif result['success'] and degrees == "f": 
     result = result['response'] 
     
-    temperature_fahrenheit = int(result['ob']['tempC']) * 1.8 + 32
+    temperature_fahrenheit = round(int(result['ob']['tempC']) * 1.8 + 32)
     feels_like_fahrenheit = round(int(result['ob']['feelslikeC']) * 1.8 + 32) #using the formula to compute Celsius to Fahrenheit
     
     lines = ("Temperature (F): " + str(temperature_fahrenheit), 
@@ -199,8 +208,12 @@ elif result['success'] and degrees == "f":
 
     if str(result['ob']['weather']) == "Thunderstorm":
         choose_quote = random.choice(group_thunderstorm)
-        print(choose_quote)        
+        print(choose_quote)
+     
+    if (str(result['ob']['weather']) not in code_clear) and (str(result['ob']['weather']) not in code_cloud) and (str(result['ob']['weather']) not in code_fog) and (str(result['ob']['weather']) not in code_rain) and (str(result['ob']['weather']) not in code_frost) and (str(result['ob']['weather']) not in code_snow) and (str(result['ob']['weather']) != "Hail") and (str(result['ob']['weather']) != "Thunderstorm"):
+         print("The quote for this kind of weather is still in development :)")
        	
+
     from twilio.rest import Client # importing the Twilio Python helper library
 			       # we used it to send SMS messages from Python
 			       # this is an external library, which you need to install separately 
