@@ -74,57 +74,43 @@ if result['success'] and degrees == "c":
 # Creating wisdom thought categories covering most common weather conditions 
      group_clear = ["Keep your face to the sunshine and you cannot see a shadow! (Hellen Keller)", "A day without sunshine is like, you know, night. (Steve Martin)", "I don't complain when it's sunny. (Tim Howard)", "Change, like sunshine, can be a friend or a foe, a blessing or a curse, a dawn or a dusk. (William Artur Ward)"]
      group_cloudy = ["Whatever the clouds plan to do; always trust in the sun which never fails to come out. (Munia Khan)","Behind the clouds, the sun is still shining! (Henry Wadsworth Longfellow)", "Who cares about the clouds when we're together? Just sing a song and bring the sunny weather! (Dale Evans)", "Our mind is like a cloudy sky: in essence clear and pure, but overcast by clouds of delusions. Just as the thickest clouds can disperse, so, too, even the heaviest delusions can be removed from our mind. (Kelsang Gyatso)"]
-     group_hail = ["Joy descends gently upon us like the evening dew, and does not patter down like a hailstorm. (Jean Paul)", "Life is a hailstorm of distractions. It's not the monster that stops us but the mosquito. (Robert G. Allen)"]
      group_fog = ["All action takes place, so to speak, in a kind of twilight, which like a fog or moonlight, often tends to make things seem grotesque and larger than they really are. (Carl von Clausewitz)", "Most consequential choices involve shades of gray, and some fog is often useful in getting things done. (Timothy Geithner)", "It is not the clear-sighted who rule the world. Great achievements are accomplished in a blessed, warm fog. (Joseph Conrad)", "Writing is like driving at night in the fog. You can only see as far as your headlights, but you can make the whole trip that way. (E. L. Doctorow)"]
-     group_frost = ["Life is only a flicker of melted ice. (Dejan Stojanovic)", "It is the life of the crystal, the architect of the flake, the fire of the frost, the soul of the sunbeam. This crisp winter air is full of it. (John Burroughs)", "Frost is the greatest artist in our clime - he paints in nature and describes in rime. (Thomas Hood)", "The frost makes a flower, the dew makes a star. (Sylvia Plath)"]
      group_rain = ["The way I see it, if you want the rainbow, you gotta put up with the rain. (Dolly Parton)", "The best thing one can do when it's raining is to let it rain. (Henry Wadsworth Longfellow)", "If the rain spoils our picnic, but saves a farmer's crop, who are we to say it shouldn't rain? (Tom Barrett)", "Into each life some rain must fall. (Henry Wadsworth Longfellow)"]
+     group_frost = ["Life is only a flicker of melted ice. (Dejan Stojanovic)", "It is the life of the crystal, the architect of the flake, the fire of the frost, the soul of the sunbeam. This crisp winter air is full of it. (John Burroughs)", "Frost is the greatest artist in our clime - he paints in nature and describes in rime. (Thomas Hood)", "The frost makes a flower, the dew makes a star. (Sylvia Plath)"]
      group_snow = ["The Eskimos had fifty-two names for snow because it was important to them: there ought to be as many for love. (Margaret Atwood)", "Snow and adolescence are the only problems that disappear if you ignore them long enough. (Earl Wilson)", "Advice is like snow - the softer it falls, the longer it dwells upon, and the deeper it sinks into the mind. (Samuel Taylor Coleridge)", "Courtesies cannot be borrowed like snow shovels; you must have some of your own. (John Wanamaker)"]
+     group_hail = ["Joy descends gently upon us like the evening dew, and does not patter down like a hailstorm. (Jean Paul)", "Life is a hailstorm of distractions. It's not the monster that stops us but the mosquito. (Robert G. Allen)"]
      group_thunderstorm = ["After every storm the sun will smile; for every problem there is a solution, and the soul's indefeasible duty is to be of good cheer. (William R. Alger)", "The fishermen know that the sea is dangerous and the storm terrible, but they have never found these dangers sufficient reason for remaining ashore. (Vincent Van Gogh)", "After a storm comes a calm. (Matthew Henry)", "The more violent the storm, the quicker it passes. (Paulo Cohelo)"]
 
 # Creating sky description categories  
      code_clear = ["Clear", "Fair", "Fair/Mostly Sunny", "Mostly Sunny", "Sunny", "Mostly Clear"]
-     code_cloud = ["Cloudy", "Partly Cloudy", "Mostly Cloudy", "Overcast", "Cloudy/Overcast", "Mostly Cloudy with Mist and Fog", "Cloudy with Mist and Fog", "Cloudy with Blowing"]
+     code_cloud = ["Cloudy", "Partly Cloudy", "Mostly Cloudy", "Overcast", "Cloudy/Overcast", "Mostly Cloudy with Mist and Fog", "Cloudy with Mist and Fog"]
      code_fog = ["Fog", "Ice Fog", "Haze","Hazy", "Mist", "Freezing Fog", "Cloudy with Areas of Fog", "Mostly Clear with Mist and Fog"]
      code_rain = ["Rain", "Drizzle", "Rain showers", "Freezing drizzle", "Freezing rain", "Mostly Cloudy with Light Rain","Mostly Cloudy with Heavy Rain", "Mostly Cloudy with Drizzle", "Mostly Cloudy with Heavy Drizzle", "Cloudy with Drizzle","Cloudy with Heavy Drizzle", "Cloudy with Light Drizzle", "Mostly Cloudy with Light Drizzle", "Cloudy with Light Rain", "Cloudy with Heavy Rain"]
      code_frost = ["Frost", "Ice Pellets", "Ice Pellets/Sleet", "Ice Crystals"]
-     code_snow = ["Snow", "Rain/snow mix", "Snow/sleet mix", "Wintry mix (snow, sleet, rain)", "Snow showers", "Cloudy with Light Snow", "Mostly Cloudy with Scattered Snow Showers"]
+     code_snow = ["Snow", "Rain/snow mix", "Snow/sleet mix", "Wintry mix (snow, sleet, rain)", "Snow showers", "Cloudy with Light Snow"]
+     code_hail = ["Hail"]
+     code_thunderstorm = ["Thunderstorm"]
 
 # Setting up scenarios to display a random wisdom thought corresponding to sky description categories
-     if str(result['ob']['weather']) in code_clear:
-        choose_quote = random.choice(group_clear)
-        print(choose_quote)
-
-     if str(result['ob']['weather']) in code_cloud:
-        choose_quote = random.choice(group_cloudy)
-        print(choose_quote)
-
-     if str(result['ob']['weather']) in code_fog:
-        choose_quote = random.choice(group_fog)
-        print(choose_quote)
-
-     if str(result['ob']['weather']) in code_rain:
-        choose_quote = random.choice(group_rain)
-        print(choose_quote)
-
-     if str(result['ob']['weather']) in code_frost:
-        choose_quote = random.choice(group_frost)
-        print(choose_quote)
-
-     if str(result['ob']['weather']) in code_snow:
-        choose_quote = random.choice(group_snow)
-        print(choose_quote)
-
-     if str(result['ob']['weather']) == "Hail":
-        choose_quote = random.choice(group_hail)
-        print(choose_quote)
-
-     if str(result['ob']['weather']) == "Thunderstorm":
-        choose_quote = random.choice(group_thunderstorm)
-        print(choose_quote)
-	
-     if (str(result['ob']['weather']) not in code_clear) and (str(result['ob']['weather']) not in code_cloud) and (str(result['ob']['weather']) not in code_fog) and (str(result['ob']['weather']) not in code_rain) and (str(result['ob']['weather']) not in code_frost) and (str(result['ob']['weather']) not in code_snow) and (str(result['ob']['weather']) != "Hail") and (str(result['ob']['weather']) != "Thunderstorm"):
-         print("The quote for this kind of weather is still in development :)")
+     list_of_codes = [code_clear, code_cloud, code_fog, code_rain, code_frost, code_snow, code_hail, code_thunderstorm]
+     list_of_groups = [group_clear, group_cloudy, group_fog, group_rain, group_frost, group_snow, group_hail, group_thunderstorm] #creating two lists of the groups and codes for zipping
+     
     
+     weather_missing = 0 #counting up when the weather doesn't occur among the codes as the code loops over them
+
+     for code, group in zip(list_of_codes, list_of_groups):
+        if str(result['ob']['weather']) in code:  #looping over the zipped lists to see if the weather description is present in any of the codes (e.g. code_clear)
+          quote = random.choice(group)   #if it is, then it chooses a quote from the relevant group
+          print(quote)
+        
+        elif str(result['ob']['weather']) not in code:
+           weather_missing += 1   #when the weather description is not included in the codes we listed, the count increases by 1
+           if weather_missing == len(list_of_codes): #when the weather_missing was counted in each code of the zip list,
+           #it will equal the length of the list_of_codes, meaning the weather doesn't occur in any of the codes
+               print("The quote for this kind of weather is still in development :)")
+    
+     
+	
      from twilio.rest import Client # importing the Twilio Python helper library
 			       # we used it to send SMS messages from Python
 			       # this is an external library, which you need to install separately 
@@ -162,57 +148,43 @@ elif result['success'] and degrees == "f":
     for line in lines: 
         print(line)
     
-    group_clear = ["Keep your face to the sunshine and you cannot see a shadow! (Hellen Keller)", "A day without sunshine is like, you know, night. (Steve Martin)", "I don't complain when it's sunny. (Tim Howard)", "Change, like sunshine, can be a friend or a foe, a blessing or a curse, a dawn or a dusk. (William Artur Ward)"]
-    group_cloudy = ["Whatever the clouds plan to do; always trust in the sun which never fails to come out. (Munia Khan)","Behind the clouds, the sun is still shining! (Henry Wadsworth Longfellow)", "Who cares about the clouds when we're together? Just sing a song and bring the sunny weather! (Dale Evans)", "Our mind is like a cloudy sky: in essence clear and pure, but overcast by clouds of delusions. Just as the thickest clouds can disperse, so, too, even the heaviest delusions can be removed from our mind. (Kelsang Gyatso)"]
-    group_hail = ["Joy descends gently upon us like the evening dew, and does not patter down like a hailstorm. (Jean Paul)", "Life is a hailstorm of distractions. It's not the monster that stops us but the mosquito. (Robert G. Allen)"]
-    group_fog = ["All action takes place, so to speak, in a kind of twilight, which like a fog or moonlight, often tends to make things seem grotesque and larger than they really are. (Carl von Clausewitz)", "Most consequential choices involve shades of gray, and some fog is often useful in getting things done. (Timothy Geithner)", "It is not the clear-sighted who rule the world. Great achievements are accomplished in a blessed, warm fog. (Joseph Conrad)", "Writing is like driving at night in the fog. You can only see as far as your headlights, but you can make the whole trip that way. (E. L. Doctorow)"]
-    group_frost = ["Life is only a flicker of melted ice. (Dejan Stojanovic)", "It is the life of the crystal, the architect of the flake, the fire of the frost, the soul of the sunbeam. This crisp winter air is full of it. (John Burroughs)", "Frost is the greatest artist in our clime - he paints in nature and describes in rime. (Thomas Hood)", "The frost makes a flower, the dew makes a star. (Sylvia Plath)"]
-    group_rain = ["The way I see it, if you want the rainbow, you gotta put up with the rain. (Dolly Parton)", "The best thing one can do when it's raining is to let it rain. (Henry Wadsworth Longfellow)", "If the rain spoils our picnic, but saves a farmer's crop, who are we to say it shouldn't rain? (Tom Barrett)", "Into each life some rain must fall. (Henry Wadsworth Longfellow)"]
-    group_snow = ["The Eskimos had fifty-two names for snow because it was important to them: there ought to be as many for love. (Margaret Atwood)", "Snow and adolescence are the only problems that disappear if you ignore them long enough. (Earl Wilson)", "Advice is like snow - the softer it falls, the longer it dwells upon, and the deeper it sinks into the mind. (Samuel Taylor Coleridge)", "Courtesies cannot be borrowed like snow shovels; you must have some of your own. (John Wanamaker)"]
-    group_thunderstorm = ["After every storm the sun will smile; for every problem there is a solution, and the soul's indefeasible duty is to be of good cheer. (William R. Alger)", "The fishermen know that the sea is dangerous and the storm terrible, but they have never found these dangers sufficient reason for remaining ashore. (Vincent Van Gogh)", "After a storm comes a calm. (Matthew Henry)", "The more violent the storm, the quicker it passes. (Paulo Cohelo)"]
+    # Creating wisdom thought categories covering most common weather conditions 
+     group_clear = ["Keep your face to the sunshine and you cannot see a shadow! (Hellen Keller)", "A day without sunshine is like, you know, night. (Steve Martin)", "I don't complain when it's sunny. (Tim Howard)", "Change, like sunshine, can be a friend or a foe, a blessing or a curse, a dawn or a dusk. (William Artur Ward)"]
+     group_cloudy = ["Whatever the clouds plan to do; always trust in the sun which never fails to come out. (Munia Khan)","Behind the clouds, the sun is still shining! (Henry Wadsworth Longfellow)", "Who cares about the clouds when we're together? Just sing a song and bring the sunny weather! (Dale Evans)", "Our mind is like a cloudy sky: in essence clear and pure, but overcast by clouds of delusions. Just as the thickest clouds can disperse, so, too, even the heaviest delusions can be removed from our mind. (Kelsang Gyatso)"]
+     group_fog = ["All action takes place, so to speak, in a kind of twilight, which like a fog or moonlight, often tends to make things seem grotesque and larger than they really are. (Carl von Clausewitz)", "Most consequential choices involve shades of gray, and some fog is often useful in getting things done. (Timothy Geithner)", "It is not the clear-sighted who rule the world. Great achievements are accomplished in a blessed, warm fog. (Joseph Conrad)", "Writing is like driving at night in the fog. You can only see as far as your headlights, but you can make the whole trip that way. (E. L. Doctorow)"]
+     group_rain = ["The way I see it, if you want the rainbow, you gotta put up with the rain. (Dolly Parton)", "The best thing one can do when it's raining is to let it rain. (Henry Wadsworth Longfellow)", "If the rain spoils our picnic, but saves a farmer's crop, who are we to say it shouldn't rain? (Tom Barrett)", "Into each life some rain must fall. (Henry Wadsworth Longfellow)"]
+     group_frost = ["Life is only a flicker of melted ice. (Dejan Stojanovic)", "It is the life of the crystal, the architect of the flake, the fire of the frost, the soul of the sunbeam. This crisp winter air is full of it. (John Burroughs)", "Frost is the greatest artist in our clime - he paints in nature and describes in rime. (Thomas Hood)", "The frost makes a flower, the dew makes a star. (Sylvia Plath)"]
+     group_snow = ["The Eskimos had fifty-two names for snow because it was important to them: there ought to be as many for love. (Margaret Atwood)", "Snow and adolescence are the only problems that disappear if you ignore them long enough. (Earl Wilson)", "Advice is like snow - the softer it falls, the longer it dwells upon, and the deeper it sinks into the mind. (Samuel Taylor Coleridge)", "Courtesies cannot be borrowed like snow shovels; you must have some of your own. (John Wanamaker)"]
+     group_hail = ["Joy descends gently upon us like the evening dew, and does not patter down like a hailstorm. (Jean Paul)", "Life is a hailstorm of distractions. It's not the monster that stops us but the mosquito. (Robert G. Allen)"]
+     group_thunderstorm = ["After every storm the sun will smile; for every problem there is a solution, and the soul's indefeasible duty is to be of good cheer. (William R. Alger)", "The fishermen know that the sea is dangerous and the storm terrible, but they have never found these dangers sufficient reason for remaining ashore. (Vincent Van Gogh)", "After a storm comes a calm. (Matthew Henry)", "The more violent the storm, the quicker it passes. (Paulo Cohelo)"]
 
-    code_clear = ["Clear", "Fair", "Fair/Mostly Sunny", "Mostly Sunny", "Sunny", "Mostly Clear"]
-    code_cloud = ["Cloudy", "Partly Cloudy", "Mostly Cloudy", "Overcast", "Cloudy/Overcast", "Mostly Cloudy with Mist and Fog", "Cloudy with Mist and Fog"]
-    code_fog = ["Fog", "Ice Fog", "Haze", "Mist", "Freezing Fog"]
-    code_rain = ["Rain", "Drizzle", "Rain showers", "Freezing drizzle", "Freezing rain", "Mostly Cloudy with Light Rain","Mostly Cloudy with Heavy Rain", "Mostly Cloudy with Drizzle", "Mostly Cloudy with Heavy Drizzle", "Cloudy with Drizzle","Cloudy with Heavy Drizzle", "Cloudy with Light Drizzle", "Mostly Cloudy with Light Drizzle", "Cloudy with Light Rain", "Cloudy with Heavy Rain"]
-    code_frost = ["Frost", "Ice Pellets", "Ice Pellets/Sleet", "Ice Crystals"]
-    code_snow = ["Snow", "Rain/snow mix", "Snow/sleet mix", "Wintry mix (snow, sleet, rain)", "Snow showers", "Cloudy with Light Snow"]
+# Creating sky description categories  
+     code_clear = ["Clear", "Fair", "Fair/Mostly Sunny", "Mostly Sunny", "Sunny", "Mostly Clear"]
+     code_cloud = ["Cloudy", "Partly Cloudy", "Mostly Cloudy", "Overcast", "Cloudy/Overcast", "Mostly Cloudy with Mist and Fog", "Cloudy with Mist and Fog"]
+     code_fog = ["Fog", "Ice Fog", "Haze","Hazy", "Mist", "Freezing Fog", "Cloudy with Areas of Fog", "Mostly Clear with Mist and Fog"]
+     code_rain = ["Rain", "Drizzle", "Rain showers", "Freezing drizzle", "Freezing rain", "Mostly Cloudy with Light Rain","Mostly Cloudy with Heavy Rain", "Mostly Cloudy with Drizzle", "Mostly Cloudy with Heavy Drizzle", "Cloudy with Drizzle","Cloudy with Heavy Drizzle", "Cloudy with Light Drizzle", "Mostly Cloudy with Light Drizzle", "Cloudy with Light Rain", "Cloudy with Heavy Rain"]
+     code_frost = ["Frost", "Ice Pellets", "Ice Pellets/Sleet", "Ice Crystals"]
+     code_snow = ["Snow", "Rain/snow mix", "Snow/sleet mix", "Wintry mix (snow, sleet, rain)", "Snow showers", "Cloudy with Light Snow"]
+     code_hail = ["Hail"]
+     code_thunderstorm = ["Thunderstorm"]
 
-
-    if str(result['ob']['weather']) in code_clear:
-        choose_quote = random.choice(group_clear)
-        print(choose_quote)
-
-    if str(result['ob']['weather']) in code_cloud:
-        choose_quote = random.choice(group_cloudy)
-        print(choose_quote)
-
-    if str(result['ob']['weather']) in code_fog:
-        choose_quote = random.choice(group_fog)
-        print(choose_quote)
-
-    if str(result['ob']['weather']) in code_rain:
-        choose_quote = random.choice(group_rain)
-        print(choose_quote)
-
-    if str(result['ob']['weather']) in code_frost:
-        choose_quote = random.choice(group_frost)
-        print(choose_quote)
-
-    if str(result['ob']['weather']) in code_snow:
-        choose_quote = random.choice(group_snow)
-        print(choose_quote)
-
-    if str(result['ob']['weather']) == "Hail":
-        choose_quote = random.choice(group_hail)
-        print(choose_quote)
-
-    if str(result['ob']['weather']) == "Thunderstorm":
-        choose_quote = random.choice(group_thunderstorm)
-        print(choose_quote)
+# Setting up scenarios to display a random wisdom thought corresponding to sky description categories
+     list_of_codes = [code_clear, code_cloud, code_fog, code_rain, code_frost, code_snow, code_hail, code_thunderstorm]
+     list_of_groups = [group_clear, group_cloudy, group_fog, group_rain, group_frost, group_snow, group_hail, group_thunderstorm] #creating two lists of the groups and codes for zipping
      
-    if (str(result['ob']['weather']) not in code_clear) and (str(result['ob']['weather']) not in code_cloud) and (str(result['ob']['weather']) not in code_fog) and (str(result['ob']['weather']) not in code_rain) and (str(result['ob']['weather']) not in code_frost) and (str(result['ob']['weather']) not in code_snow) and (str(result['ob']['weather']) != "Hail") and (str(result['ob']['weather']) != "Thunderstorm"):
-         print("The quote for this kind of weather is still in development :)")
+    
+     weather_missing = 0 #counting up when the weather doesn't occur among the codes as the code loops over them
+
+     for code, group in zip(list_of_codes, list_of_groups):
+        if str(result['ob']['weather']) in code:  #looping over the zipped lists to see if the weather description is present in any of the codes (e.g. code_clear)
+          quote = random.choice(group)   #if it is, then it chooses a quote from the relevant group
+          print(quote)
+        
+        elif str(result['ob']['weather']) not in code:
+           weather_missing += 1   #when the weather description is not included in the codes we listed, the count increases by 1
+           if weather_missing == len(list_of_codes): #when the weather_missing was counted in each code of the zip list,
+           #it will equal the length of the list_of_codes, meaning the weather doesn't occur in any of the codes
+               print("The quote for this kind of weather is still in development :)")
        	
 
     from twilio.rest import Client # importing the Twilio Python helper library
