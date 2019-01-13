@@ -46,7 +46,8 @@ count = 0 # counting unsuccessful request attempts
 while result['success'] == False:
      city_country = str(input("Oops, something went wrong. Please try again with city and ISO country code (e.g. tilburg,nl):"))
      count += 1
-     request = urllib.request.urlopen(url_part1 + city_country + url_part2 + client_id + client_secret)
+     whole_url = url_part1 + city_country + url_part2 + client_id + client_secret
+     request = urllib.request.urlopen(whole_url)
      response = request.read()
      result = json.loads(response)
      
