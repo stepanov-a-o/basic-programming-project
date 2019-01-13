@@ -58,9 +58,9 @@ while result['success'] == False:
          request.close()
          break
 		
-# Reading the response from AerisWeather and presenting it to a user in Celsius degrees
+# Reading the response from AerisWeather and presenting it to the user in Celsius degrees
 if result['success'] and degrees == "c": 
-     result = result['response'] # removing unnecessary dictionaries (the "success: True" etc. so we can show to a user
+     result = result['response'] # removing unnecessary dictionaries (the "success: True" etc. so we can show to the user
 				 # only the important part - the "response")
     
      lines = ("Temperature (C): " + str(result['ob']['tempC']), # unpacking the dictionary using keys
@@ -133,7 +133,7 @@ if result['success'] and degrees == "c":
                        body = sms)
 
         
-# Creating scenario for weather report in Fahrenheit        
+# Reading the response from AerisWeather and presenting it to the user in Fahrenheit degrees      
 elif result['success'] and degrees == "f": 
     result = result['response'] 
     
